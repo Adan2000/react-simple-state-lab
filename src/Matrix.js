@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Cell from './Cell'
 
 export default class Matrix extends Component {
   
   genRow = (vals) => {
-    return vals.map(val => <div className="cell"></div>) // replace me and render a cell component instead!
+    return vals.map(val => <Cell value={val} />)
   }
   
   genMatrix = () => {
@@ -17,5 +18,22 @@ export default class Matrix extends Component {
       </div>
     )
   }
-  
 }
+Matrix.defaultProps = {
+  values: (() => {
+    const defRow = ['#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00']
+    return (new Array(10).fill(defRow))
+  })()
+}
+//here we set  some defaultprops
+
+
+
+//in genMatrix it maps over Basically, every 'row' 
+//in this.props.values and 
+//will create a <div className="row"> and pass in 
+//several arrays of seperated rows of the data.js
+
+//in genRow vals will = to seperated array rows as above
+//in here we will map through those arrays 
+//pass in the array of values to Cell as a 'value'
